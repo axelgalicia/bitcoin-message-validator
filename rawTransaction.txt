@@ -54,3 +54,154 @@ decoderawtransaction 02000000014fec90b5609c9490548625a83879b327a00bd2a55bf349c82
     }
   ]
 }
+
+
+//Sign RAW Transaction
+
+// SIGN RAW TRANSACTION
+TRANSACTION HASH = Get from result of createrawtransaction command
+TXID = Get from listunspent command
+VOUT (optional) = Get from listunspent command
+SCRIPT PUB KEY (optional) = Get from createrawtransaction command
+PRIVATE KEY (optional) = Get from wallet
+
+//DEPRECATED
+signrawtransaction 'TRANSACTION_HASH_HERE''[{"txid":"TXID_HERE","vout":VOUT_HERE,"scriptPubKey":"SCRIPT_PUB_KEY_HERE"}]''["PRIVATE_KEY"]'
+//DEPRECATED
+signrawtransaction '02000000014fec90b5609c9490548625a83879b327a00bd2a55bf349c824e7af7cd9a0410e0100000000ffffffff0240420f000000000017a91456f465a05e9dacccaae3be2f8ca2f5850104ffa787049a59000000000017a9142e4a77c368931b96ab3186b8a715ebadb92379a78700000000''[{"txid":"0e41a0d97cafe724c849f35ba5d20ba027b37938a825865490949c60b590ec4f","vout":1,"scriptPubKey":"a9142e4a77c368931b96ab3186b8a715ebadb92379a787"}]''["PRIVATE_KEY"]'
+
+UTXO (Unspent Transaction Output)
+
+[
+  {
+    "txid": "0e41a0d97cafe724c849f35ba5d20ba027b37938a825865490949c60b590ec4f",
+    "vout": 1,
+    "address": "2MwTzHDugDZwGg1aqTm44tx9a4B6iE1wArV",
+    "label": "Faucet Public to Udacity1",
+    "redeemScript": "00144be7db15524b40b957d1afabb400e1e94da48432",
+    "scriptPubKey": "a9142e4a77c368931b96ab3186b8a715ebadb92379a787",
+    "amount": 0.07922132,
+    "confirmations": 1175,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }
+]
+
+//NEW
+signrawtransactionwithkey '02000000014fec90b5609c9490548625a83879b327a00bd2a55bf349c824e7af7cd9a0410e0100000000ffffffff0240420f000000000017a91456f465a05e9dacccaae3be2f8ca2f5850104ffa787049a59000000000017a9142e4a77c368931b96ab3186b8a715ebadb92379a78700000000' '["PRIVATE_KEY"]' '[{"txid":"0e41a0d97cafe724c849f35ba5d20ba027b37938a825865490949c60b590ec4f","vout":1,"scriptPubKey":"a9142e4a77c368931b96ab3186b8a715ebadb92379a787","redeemScript":"00144be7db15524b40b957d1afabb400e1e94da48432","amount": 0.07922132}]'
+
+
+{
+  "hex": "020000000001014fec90b5609c9490548625a83879b327a00bd2a55bf349c824e7af7cd9a0410e01000000171600144be7db15524b40b957d1afabb400e1e94da48432ffffffff0240420f000000000017a91456f465a05e9dacccaae3be2f8ca2f5850104ffa787049a59000000000017a9142e4a77c368931b96ab3186b8a715ebadb92379a78702473044022050f9489b670fbd91088c63e7c63dd280b9e3a968cfccde1072383a687c8a1782022066023bf4a44535cd9dccef70be962ce4f9c06067ff3196ccfd8128f6a5c19a39012103d3c14dc9b6650b75750332c4292b543a6660a4467c5f64e86c9e186a58d9e95900000000",
+  "complete": true
+}
+
+decoderawtransaction 020000000001014fec90b5609c9490548625a83879b327a00bd2a55bf349c824e7af7cd9a0410e01000000171600144be7db15524b40b957d1afabb400e1e94da48432ffffffff0240420f000000000017a91456f465a05e9dacccaae3be2f8ca2f5850104ffa787049a59000000000017a9142e4a77c368931b96ab3186b8a715ebadb92379a78702473044022050f9489b670fbd91088c63e7c63dd280b9e3a968cfccde1072383a687c8a1782022066023bf4a44535cd9dccef70be962ce4f9c06067ff3196ccfd8128f6a5c19a39012103d3c14dc9b6650b75750332c4292b543a6660a4467c5f64e86c9e186a58d9e95900000000
+
+{
+  "txid": "c29dbaa29501e1a9e25ae0f0d538a5e7416f8e5d59eb9141a4f3d25ab613a8a6",
+  "hash": "cadd50b303675021d2472c90f254d34d927cd98e0da83210a6ab301688d90f71",
+  "version": 2,
+  "size": 247,
+  "vsize": 166,
+  "weight": 661,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "0e41a0d97cafe724c849f35ba5d20ba027b37938a825865490949c60b590ec4f",
+      "vout": 1,
+      "scriptSig": {
+        "asm": "00144be7db15524b40b957d1afabb400e1e94da48432",
+        "hex": "1600144be7db15524b40b957d1afabb400e1e94da48432"
+      },
+      "txinwitness": [
+        "3044022050f9489b670fbd91088c63e7c63dd280b9e3a968cfccde1072383a687c8a1782022066023bf4a44535cd9dccef70be962ce4f9c06067ff3196ccfd8128f6a5c19a3901",
+        "03d3c14dc9b6650b75750332c4292b543a6660a4467c5f64e86c9e186a58d9e959"
+      ],
+      "sequence": 4294967295
+    }
+  ],
+  "vout": [
+    {
+      "value": 0.01000000,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "OP_HASH160 56f465a05e9dacccaae3be2f8ca2f5850104ffa7 OP_EQUAL",
+        "hex": "a91456f465a05e9dacccaae3be2f8ca2f5850104ffa787",
+        "reqSigs": 1,
+        "type": "scripthash",
+        "addresses": [
+          "2N1AzsnFw28s5hq3KDyotFHetMZ69ce2xyT"
+        ]
+      }
+    },
+    {
+      "value": 0.05872132,
+      "n": 1,
+      "scriptPubKey": {
+        "asm": "OP_HASH160 2e4a77c368931b96ab3186b8a715ebadb92379a7 OP_EQUAL",
+        "hex": "a9142e4a77c368931b96ab3186b8a715ebadb92379a787",
+        "reqSigs": 1,
+        "type": "scripthash",
+        "addresses": [
+          "2MwTzHDugDZwGg1aqTm44tx9a4B6iE1wArV"
+        ]
+      }
+    }
+  ]
+}
+
+
+//Send transaction to the network
+
+sendrawtransaction 020000000001014fec90b5609c9490548625a83879b327a00bd2a55bf349c824e7af7cd9a0410e01000000171600144be7db15524b40b957d1afabb400e1e94da48432ffffffff0240420f000000000017a91456f465a05e9dacccaae3be2f8ca2f5850104ffa787049a59000000000017a9142e4a77c368931b96ab3186b8a715ebadb92379a78702473044022050f9489b670fbd91088c63e7c63dd280b9e3a968cfccde1072383a687c8a1782022066023bf4a44535cd9dccef70be962ce4f9c06067ff3196ccfd8128f6a5c19a39012103d3c14dc9b6650b75750332c4292b543a6660a4467c5f64e86c9e186a58d9e95900000000
+
+
+//GET Transaction
+
+gettransaction c29dbaa29501e1a9e25ae0f0d538a5e7416f8e5d59eb9141a4f3d25ab613a8a6
+
+
+￼
+{
+  "amount": -0.01000000,
+  "fee": -0.01050000,
+  "confirmations": 2,
+  "blockhash": "000000000000dd090654849e4179fe7c36107be923b29e91b9b49aea5099eea8",
+  "blockindex": 1,
+  "blocktime": 1541649870,
+  "txid": "c29dbaa29501e1a9e25ae0f0d538a5e7416f8e5d59eb9141a4f3d25ab613a8a6",
+  "walletconflicts": [
+  ],
+  "time": 1541649819,
+  "timereceived": 1541649819,
+  "bip125-replaceable": "no",
+  "details": [
+    {
+      "address": "2N1AzsnFw28s5hq3KDyotFHetMZ69ce2xyT",
+      "category": "send",
+      "amount": -0.01000000,
+      "vout": 0,
+      "fee": -0.01050000,
+      "abandoned": false
+    },
+    {
+      "address": "2MwTzHDugDZwGg1aqTm44tx9a4B6iE1wArV",
+      "category": "send",
+      "amount": -0.05872132,
+      "label": "Faucet Public to Udacity1",
+      "vout": 1,
+      "fee": -0.01050000,
+      "abandoned": false
+    },
+    {
+      "address": "2MwTzHDugDZwGg1aqTm44tx9a4B6iE1wArV",
+      "category": "receive",
+      "amount": 0.05872132,
+      "label": "Faucet Public to Udacity1",
+      "vout": 1
+    }
+  ],
+  "hex": "020000000001014fec90b5609c9490548625a83879b327a00bd2a55bf349c824e7af7cd9a0410e01000000171600144be7db15524b40b957d1afabb400e1e94da48432ffffffff0240420f000000000017a91456f465a05e9dacccaae3be2f8ca2f5850104ffa787049a59000000000017a9142e4a77c368931b96ab3186b8a715ebadb92379a78702473044022050f9489b670fbd91088c63e7c63dd280b9e3a968cfccde1072383a687c8a1782022066023bf4a44535cd9dccef70be962ce4f9c06067ff3196ccfd8128f6a5c19a39012103d3c14dc9b6650b75750332c4292b543a6660a4467c5f64e86c9e186a58d9e95900000000"
+}
